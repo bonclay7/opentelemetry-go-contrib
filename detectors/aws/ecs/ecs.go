@@ -55,8 +55,8 @@ type ResourceDetector struct {
 	utils detectorUtils
 }
 
-func NewResourceDetector() *ResourceDetector {
-	return &ResourceDetector{
+func NewResourceDetector() ResourceDetector {
+	return ResourceDetector{
 		utils: new(ecsDetectorUtils),
 	}
 }
@@ -68,8 +68,7 @@ var _ detectorUtils = (*ecsDetectorUtils)(nil)
 var _ resource.Detector = (*ResourceDetector)(nil)
 
 // Detect finds associated resources when running on ECS environment.
-func (detector *ResourceDetector) Detect(ctx context.Context) (*resource.Resource, error) {
-	fmt.Println("Debug")
+func (detector ResourceDetector) Detect(ctx context.Context) (*resource.Resource, error) {
 
 	metadataURIV3 := os.Getenv(metadataV3EnvVar)
 	metadataURIV4 := os.Getenv(metadataV4EnvVar)
