@@ -55,6 +55,12 @@ type ResourceDetector struct {
 	utils detectorUtils
 }
 
+func NewResourceDetector() *ResourceDetector {
+	return &ResourceDetector{
+		utils: new(ecsDetectorUtils),
+	}
+}
+
 // compile time assertion that ecsDetectorUtils implements detectorUtils interface
 var _ detectorUtils = (*ecsDetectorUtils)(nil)
 
