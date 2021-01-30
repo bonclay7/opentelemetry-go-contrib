@@ -69,6 +69,8 @@ var _ resource.Detector = (*ResourceDetector)(nil)
 
 // Detect finds associated resources when running on ECS environment.
 func (detector *ResourceDetector) Detect(ctx context.Context) (*resource.Resource, error) {
+	fmt.Println("Debug")
+
 	metadataURIV3 := os.Getenv(metadataV3EnvVar)
 	metadataURIV4 := os.Getenv(metadataV4EnvVar)
 
